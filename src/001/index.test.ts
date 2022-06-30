@@ -1,7 +1,5 @@
-import {
-  doesTwoNumbersOfListAddsUpToKNumber,
-  doesTwoNumbersOfListAddsUpToKNumber_onePass,
-} from '.';
+import { doesTwoNumbersOfListAddsUpToKNumber } from '.';
+import { doesTwoNumbersOfListAddsUpToKNumber as bonusSolution } from './bonus';
 
 describe('doesTwoNumbersOfListAddsUpToKNumber', () => {
   it.each`
@@ -17,12 +15,13 @@ describe('doesTwoNumbersOfListAddsUpToKNumber', () => {
     ({ numbers, numberK }) => {
       const result = [
         doesTwoNumbersOfListAddsUpToKNumber(numbers, numberK),
-        doesTwoNumbersOfListAddsUpToKNumber_onePass(numbers, numberK),
+        bonusSolution(numbers, numberK),
       ];
       expect(result).toEqual([true, true]);
     }
   );
-  xit.each`
+
+  it.each`
     numbers           | numberK
     ${[10, 15, 3, 7]} | ${11}
     ${[10, 15, 3, 7]} | ${28}
@@ -33,7 +32,7 @@ describe('doesTwoNumbersOfListAddsUpToKNumber', () => {
     ({ numbers, numberK }) => {
       const result = [
         doesTwoNumbersOfListAddsUpToKNumber(numbers, numberK),
-        doesTwoNumbersOfListAddsUpToKNumber_onePass(numbers, numberK),
+        bonusSolution(numbers, numberK),
       ];
       expect(result).toEqual([false, false]);
     }

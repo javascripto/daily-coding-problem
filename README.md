@@ -1,1 +1,1 @@
-# node-jest-typescript-template
+# Daily Coding Problem

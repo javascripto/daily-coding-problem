@@ -1,7 +1,20 @@
-import { doesTwoNumbersOfListAddsUpToKNumber } from '.';
-import { doesTwoNumbersOfListAddsUpToKNumber as bonusSolution } from './bonus';
+describe.each`
+  file
+  ${'./index'}
+  ${'./bonus'}
+`('doesTwoNumbersOfListAddsUpToKNumber() file: $file', ({ file }) => {
+  let doesTwoNumbersOfListAddsUpToKNumber: (
+    numbers: number[],
+    numberK: number
+  ) => boolean;
 
-describe('doesTwoNumbersOfListAddsUpToKNumber', () => {
+  beforeAll(() => {
+    import(file).then((module) => {
+      doesTwoNumbersOfListAddsUpToKNumber =
+        module.doesTwoNumbersOfListAddsUpToKNumber;
+    });
+  });
+
   it.each`
     numbers           | numberK
     ${[10, 15, 3, 7]} | ${25}
@@ -13,11 +26,8 @@ describe('doesTwoNumbersOfListAddsUpToKNumber', () => {
   `(
     'should return true when sum of two numbers of $numbers adds up to numberK $numberK',
     ({ numbers, numberK }) => {
-      const result = [
-        doesTwoNumbersOfListAddsUpToKNumber(numbers, numberK),
-        bonusSolution(numbers, numberK),
-      ];
-      expect(result).toEqual([true, true]);
+      const result = doesTwoNumbersOfListAddsUpToKNumber(numbers, numberK);
+      expect(result).toEqual(true);
     }
   );
 
@@ -30,11 +40,8 @@ describe('doesTwoNumbersOfListAddsUpToKNumber', () => {
   `(
     'should return false when sum of two numbers of $numbers does not adds up to numberK $numberK',
     ({ numbers, numberK }) => {
-      const result = [
-        doesTwoNumbersOfListAddsUpToKNumber(numbers, numberK),
-        bonusSolution(numbers, numberK),
-      ];
-      expect(result).toEqual([false, false]);
+      const result = doesTwoNumbersOfListAddsUpToKNumber(numbers, numberK);
+      expect(result).toEqual(false);
     }
   );
 });

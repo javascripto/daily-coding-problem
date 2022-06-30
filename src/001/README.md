@@ -1,4 +1,4 @@
-# CHALLENGE 001
+# CHALLENGE 001 [EASY]
 
 Good morning! Here's your coding interview problem for today.
 
